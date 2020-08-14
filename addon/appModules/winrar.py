@@ -1,12 +1,11 @@
-__metaclass__ = type
 import os
 import winsound
 import controlTypes
-from nvdaBuiltin.appModules import totalcmd
+import appModuleHandler
 import api
-import data
-loc = os.path.abspath(os.path.dirname(data.__file__))
 
+moduleDir = os.path.dirname(__file__)
+loc = os.path.join(moduleDir, "data")
 
 
 def play(name):
@@ -15,7 +14,9 @@ def play(name):
  f = os.path.join(loc, fe + '.wav')
  if os.path.exists(f):
   winsound.PlaySound(f, winsound.SND_ASYNC)
-class AppModule(totalcmd.AppModule):
+
+
+class AppModule(appModuleHandler.AppModule):
 	def event_gainFocus(self, obj, nextHandler):
 		if obj.role == controlTypes.ROLE_LISTITEM:
 			play(obj.name)

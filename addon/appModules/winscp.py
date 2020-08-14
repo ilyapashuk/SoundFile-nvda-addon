@@ -3,8 +3,10 @@ import winsound
 import controlTypes
 import appModuleHandler
 import api
-import data
-loc = os.path.abspath(os.path.dirname(data.__file__))
+
+moduleDir = os.path.dirname(__file__)
+loc = os.path.join(moduleDir, "data")
+
 
 def play(name):
  ft = os.path.splitext(name)
